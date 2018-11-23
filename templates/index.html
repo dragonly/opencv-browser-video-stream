@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #capture {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <canvas width=640 height=360 id="capture"></canvas>
+    </div>
+    <script>
+        let $capture = document.querySelector('#capture')
+        let ctx = $capture.getContext('2d')
+        function showFrame() {
+            let image = new Image()
+            image.src = `/capture?t=${Date.now()}`
+            image.onload = function() {
+                ctx.drawImage(image, 0, 0, 1280, 720, 0, 0, 640, 360)
+                requestAnimationFrame(showFrame)
+            }
+            image.onerror = function() {
+                console.error('image load error')
+            }
+        }
+        requestAnimationFrame(showFrame)
+    </script>
+</body>
+</html>
