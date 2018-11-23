@@ -18,7 +18,8 @@
         let ctx = $capture.getContext('2d')
         function showFrame() {
             let image = new Image()
-            image.src = `/capture?t=${Date.now()}`
+            // image.src = `/capture?t=${Date.now()}`
+            image.src = '/capture'
             image.onload = function() {
                 ctx.drawImage(image, 0, 0, 1280, 720, 0, 0, 640, 360)
                 requestAnimationFrame(showFrame)
