@@ -1,3 +1,4 @@
+import webbrowser
 import numpy as np
 import cv2
 from flask import Flask, render_template, make_response
@@ -17,3 +18,5 @@ def capture():
     resp.headers['Content-Type'] = 'image/jpeg'
     resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     return resp
+
+webbrowser.open_new('http://localhost:5000')
